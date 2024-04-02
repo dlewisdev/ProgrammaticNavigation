@@ -56,6 +56,7 @@ struct MenuView: View {
             .navigationDestination(for: Route.self) { $0 }
         }
         .environmentObject(cartManager)
+        .environment(routerManager)
     }
 }
 
@@ -63,5 +64,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
             .environmentObject(ShoppingCartManager())
+            .environment(NavigationRouter())
     }
 }
