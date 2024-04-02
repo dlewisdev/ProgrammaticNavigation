@@ -36,14 +36,18 @@ struct DessertDetailView: View {
                 
                 Section("Dietry") {
                     
-                    if let ingredientsCount = dessert.ingredients?.count {
-                        let countVw = Text("x\(ingredientsCount)").font(.footnote).bold()
-                        Text("\(countVw) Ingredients")
+                    if let ingredients = dessert.ingredients {
+                        NavigationLink(value: Route.ingredients(items: ingredients)) {
+                            let countVw = Text("x\(ingredients.count)").font(.footnote).bold()
+                            Text("\(countVw) Ingredients")
+                        }
                     }
                     
-                    if let allergiesCount = dessert.allergies?.count {
-                        let countVw = Text("x\(allergiesCount)").font(.footnote).bold()
-                        Text("\(countVw) Allergies")
+                    if let allergies = dessert.allergies {
+                        NavigationLink(value: Route.allergies(items: allergies)) {
+                            let countVw = Text("x\(allergies.count)").font(.footnote).bold()
+                            Text("\(countVw) Allergies")
+                        }
                     }
                 }
             }
