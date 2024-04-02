@@ -11,4 +11,8 @@ import SwiftUI
 @Observable
 final class NavigationRouter {
     var routes = NavigationPath()
+    
+    func push(to screen: Route) {
+        routes.append(screen)
+    }
 }
