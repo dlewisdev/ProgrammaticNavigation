@@ -35,11 +35,13 @@ struct FoodDetailView: View {
             if food.allergies?.isEmpty == false ||
                food.ingredients?.isEmpty == false {
                 
-                Section("Dietry") {
+                Section("Dietary") {
                     
-                    if let ingredientsCount = food.ingredients?.count {
-                        let countVw = Text("x\(ingredientsCount)").font(.footnote).bold()
-                        Text("\(countVw) Ingredients")
+                    if let ingredients = food.ingredients {
+                        NavigationLink(value: Route.ingredients(items: ingredients)) {
+                            let countVw = Text("x\(ingredients.count)").font(.footnote).bold()
+                            Text("\(countVw) Ingredients")
+                        }
                     }
                     
                     if let allergiesCount = food.allergies?.count {
