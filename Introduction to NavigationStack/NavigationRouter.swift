@@ -10,13 +10,13 @@ import SwiftUI
 
 @Observable
 final class NavigationRouter {
-    var routes = NavigationPath()
+    var routes = [Route]()
     
     func push(to screen: Route) {
         routes.append(screen)
     }
     
     func reset() {
-        routes.removeLast(routes.count)
+        routes = []
     }
 }
