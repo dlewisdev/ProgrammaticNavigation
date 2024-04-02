@@ -1,0 +1,26 @@
+//
+//  Route.swift
+//  Introduction to NavigationStack
+//
+//  Created by Danielle Lewis on 4/2/24.
+//
+
+import Foundation
+
+enum Route: Hashable {
+    case menuItem(item: any MenuItem)
+    
+    // Used to uniquley identify each case
+    // This function says to use the hashValue as the unique identifier
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.hashValue)
+    }
+    
+    // Allows us to compare if two cases are the same by comparing the id value
+    static func == (lhs: Route, rhs: Route) -> Bool {
+        switch (lhs, rhs) {
+        case (.menuItem(let lhsItem), .menuItem(let rhsItem)):
+            return lhsItem.id == rhsItem.id
+        }
+    }
+}
