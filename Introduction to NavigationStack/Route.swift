@@ -10,6 +10,7 @@ import SwiftUI
 
 enum Route: View, Hashable {
     case menuItem(item: any MenuItem)
+    case cart
     
     // Used to uniquley identify each case
     // This function says to use the hashValue as the unique identifier
@@ -22,6 +23,10 @@ enum Route: View, Hashable {
         switch (lhs, rhs) {
         case (.menuItem(let lhsItem), .menuItem(let rhsItem)):
             return lhsItem.id == rhsItem.id
+        case (.cart, .cart):
+            return true
+        default:
+            return false
         }
     }
     
@@ -38,6 +43,8 @@ enum Route: View, Hashable {
             default:
                 EmptyView()
             }
+        case .cart:
+            CartView()
         }
     }
 }
