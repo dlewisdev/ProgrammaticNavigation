@@ -44,9 +44,11 @@ struct FoodDetailView: View {
                         }
                     }
                     
-                    if let allergiesCount = food.allergies?.count {
-                        let countVw = Text("x\(allergiesCount)").font(.footnote).bold()
-                        Text("\(countVw) Allergies")
+                    if let allergies = food.allergies {
+                        NavigationLink(value: Route.allergies(items: allergies)) {
+                            let countVw = Text("x\(allergies.count)").font(.footnote).bold()
+                            Text("\(countVw) Allergies")
+                        }
                     }
                 }
             }
