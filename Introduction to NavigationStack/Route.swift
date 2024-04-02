@@ -8,9 +8,13 @@
 import Foundation
 import SwiftUI
 
-enum Route: View, Hashable {
+enum Route {
     case menuItem(item: any MenuItem)
     case cart
+    case ingredients(items: [Ingredient])
+}
+
+extension Route: Hashable {
     
     // Used to uniquley identify each case
     // This function says to use the hashValue as the unique identifier
@@ -25,11 +29,15 @@ enum Route: View, Hashable {
             return lhsItem.id == rhsItem.id
         case (.cart, .cart):
             return true
+        case (.ingredients(let lhsItem), .ingredients(let rhsItem)):
+            return lhsItem == rhsItem
         default:
             return false
         }
     }
-    
+}
+
+extension Route: View {
     var body: some View {
         switch self {
         case .menuItem(let item):
@@ -45,6 +53,9 @@ enum Route: View, Hashable {
             }
         case .cart:
             CartView()
+            
+        case .ingredients(let items):
+            IngredientsDetailView(ingredients: items)
         }
     }
 }
