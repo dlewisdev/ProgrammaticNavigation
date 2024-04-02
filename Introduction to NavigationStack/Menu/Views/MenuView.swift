@@ -48,7 +48,7 @@ struct MenuView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     CartButton(count: cartManager.items.count) {
-                        
+                        routerManager.push(to: .cart)
                     }
                 }
             }
