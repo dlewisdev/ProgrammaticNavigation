@@ -53,21 +53,7 @@ struct MenuView: View {
                 }
             }
             .navigationTitle("Menu")
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case .menuItem(let item):
-                    switch item {
-                    case is Food:
-                        FoodDetailView(food: item as! Food)
-                    case is Drink:
-                        DrinkDetailView(drink: item as! Drink)
-                    case is Dessert:
-                        DessertDetailView(dessert: item as! Dessert)
-                    default:
-                        EmptyView()
-                    }
-                }
-            }
+            .navigationDestination(for: Route.self) { $0 }
         }
         .environmentObject(cartManager)
     }
