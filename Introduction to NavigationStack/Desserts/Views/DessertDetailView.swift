@@ -52,13 +52,12 @@ struct DessertDetailView: View {
                 }
             }
             
-            if dessert.locations?.isEmpty == false {
+            if let locations = dessert.locations {
                 
                 Section("Locations") {
                     
-                    if let locationsCount = dessert.locations?.count {
-                        let countVw = Text("x\(locationsCount)").font(.footnote).bold()
-                        Text("\(countVw) Locations")
+                    Button("See all locations") {
+                        routerManager.push(to: .locations(places: locations))
                     }
                 }
             }
