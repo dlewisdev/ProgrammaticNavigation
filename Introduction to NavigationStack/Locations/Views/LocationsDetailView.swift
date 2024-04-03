@@ -14,7 +14,7 @@ struct LocationsDetailView: View {
     var body: some View {
         List {
             ForEach(locations, id: \.name) { location in
-                /*@START_MENU_TOKEN@*/Text(location.name)/*@END_MENU_TOKEN@*/
+                NavigationLink(location.name, value: Route.map(location: location))
             }
         }
         .navigationTitle("Locations")
