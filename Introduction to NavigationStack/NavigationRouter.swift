@@ -19,4 +19,9 @@ final class NavigationRouter {
     func reset() {
         routes = []
     }
+    
+    func goBack() {
+        // Benefit of using an array, you can just remove the last item in the array to programmatically go back to the previous view
+        _ = routes.popLast()
+    }
 }
